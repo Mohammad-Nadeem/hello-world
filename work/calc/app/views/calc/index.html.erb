@@ -1,0 +1,13 @@
+<h1> Calculator</h1>
+
+<%= form_for :calc , url: { action: :new }, method: :get do |f| %>
+<%= number_field_tag :a , params[:a], :step => 0.1 %>
+<%= select_tag :operation , options_for_select([['+' , :sum],['-' , :subtr] , ['*' , :mul], ['/' , :div],['%' , :rem]]) %>
+<%= number_field_tag :b , params[:b] , :step => 0.1 %>
+<%= f.submit 'Calculate' %>
+<% end %>
+<% unless @result.nil? %>
+<%= text_field_tag 'query', @result %>	
+<a href="/calc/show">History</a>
+<% end %>
+		
